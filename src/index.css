@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --cream: #F4F1EA;
+    --olive: #1E251F;
+    --olive-light: #2A3326;
+    --border-dark: #3A4434;
+    --border-light: #D8D3C7;
+  }
+
+  * {
+    border-radius: 0 !important;
+  }
+
+  body {
+    background-color: var(--cream);
+    color: var(--olive);
+    font-family: 'Helvetica Neue', 'Arial', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer utilities {
+  .text-cream { color: #F4F1EA; }
+  .text-olive { color: #1E251F; }
+  .bg-cream { background-color: #F4F1EA; }
+  .bg-olive { background-color: #1E251F; }
+  .bg-olive-light { background-color: #2A3326; }
+  .border-olive { border-color: #1E251F; }
+  .border-cream { border-color: #F4F1EA; }
+  .border-dark-line { border-color: #3A4434; }
+  .border-light-line { border-color: #D8D3C7; }
+
+  .tracking-ultra { letter-spacing: 0.25em; }
+  .tracking-wide-sm { letter-spacing: 0.12em; }
+
+  .monoline-input {
+    border: none;
+    border-bottom: 1px solid #3A4434;
+    background: transparent;
+    padding: 0.5rem 0;
+    width: 100%;
+    color: #F4F1EA;
+    font-size: 0.875rem;
+    outline: none;
+    transition: border-color 0.15s ease;
+  }
+  .monoline-input::placeholder { color: #6B7363; }
+  .monoline-input:focus { border-bottom-color: #F4F1EA; }
+
+  .monoline-select {
+    border: none;
+    border-bottom: 1px solid #3A4434;
+    background: transparent;
+    padding: 0.5rem 0;
+    width: 100%;
+    color: #F4F1EA;
+    font-size: 0.875rem;
+    outline: none;
+    appearance: none;
+    transition: border-color 0.15s ease;
+  }
+  .monoline-select:focus { border-bottom-color: #F4F1EA; }
+  .monoline-select option { background-color: #1E251F; color: #F4F1EA; }
+}
