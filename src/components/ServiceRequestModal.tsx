@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ArrowRight, ArrowLeft, Check, Send, Upload, FileText } from 'lucide-react';
-import { services, serviceCategories, type Service, type ServiceCategory, buildWhatsAppLink, companyInfo } from '@/data/services';
+import { X, ArrowRight, ArrowLeft, Check, Send, Upload } from 'lucide-react';
+import { services, serviceCategories, type Service, type ServiceCategory, buildWhatsAppLink } from '@/data/services';
 
 interface Props {
   service: Service | null;
@@ -17,10 +17,6 @@ export function ServiceRequestModal({ service: initialService, onClose }: Props)
   );
   const [selectedService, setSelectedService] = useState<Service | null>(initialService);
   const [details, setDetails] = useState({ name: '', phone: '', email: '', contactMethod: 'WhatsApp', instructions: '' });
-
-  if (!initialService && step === 'details') {
-    setStep('category');
-  }
 
   const steps: { id: Step; label: string }[] = [
     { id: 'category', label: 'Category' },
@@ -45,20 +41,18 @@ export function ServiceRequestModal({ service: initialService, onClose }: Props)
   const canProceed = () => {
     if (step === 'category') return selectedCategory !== null;
     if (step === 'service') return selectedService !== null;
-    if (step === 'details') return details.name.trim() && details.phone.trim();
+    if (step === 'details') return Boolean(details.name.trim() && details.phone.trim());
     return true;
   };
 
   return (
-    <AnimatePresence>
-      {initialService !== null || step !== 'category' ? (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[100] bg-ink-950/80 backdrop-blur-sm flex items-center justify-center p-4"
-          onClick={onClose}
-        >
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-[100] bg-ink-950/80 backdrop-blur-sm flex items-center justify-center p-4"
+      onClick={onClose}
+    >
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -115,7 +109,7 @@ export function ServiceRequestModal({ service: initialService, onClose }: Props)
                       {serviceCategories.filter((c) => c.id !== 'All').map((cat) => (
                         <button
                           key={cat.id}
-                          onClick={() => { setSelectedCategory(cat.id); setStep('service'); }}
+                          onClick={() => { setSelectedCategory(cat.id as ServiceCategory); setStep('service'); }}
                           className={`p-4 rounded-xl border text-left transition-colors ${
                             selectedCategory === cat.id
                               ? 'border-brand-500 bg-brand-500/10'
@@ -355,8 +349,6 @@ export function ServiceRequestModal({ service: initialService, onClose }: Props)
               </div>
             )}
           </motion.div>
-        </motion.div>
-      ) : null}
-    </AnimatePresence>
+    </motion.div>
   );
 }

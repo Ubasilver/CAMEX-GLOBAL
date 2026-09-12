@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, MessageCircle } from 'lucide-react';
-import { companyInfo, buildWhatsAppLink } from '@/data/services';
+import { companyInfo } from '@/data/services';
 
 const navLinks = [
   { href: '#home', label: 'Home' },

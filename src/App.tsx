@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react';
+import { AnimatePresence } from 'framer-motion';
 import { Navbar } from '@/components/Navbar';
 import { Hero } from '@/components/Hero';
 import { TrustBar } from '@/components/TrustBar';
@@ -17,15 +18,12 @@ import type { Service } from '@/data/services';
 
 function App() {
   const [requestService, setRequestService] = useState<Service | null>(null);
-  const [modalOpen, setModalOpen] = useState(false);
 
   const openRequestModal = useCallback((service: Service) => {
     setRequestService(service);
-    setModalOpen(true);
   }, []);
 
   const closeRequestModal = useCallback(() => {
-    setModalOpen(false);
     setRequestService(null);
   }, []);
 
@@ -46,7 +44,15 @@ function App() {
       </main>
       <Footer />
       <WhatsAppButton />
-      {modalOpen && <ServiceRequestModal service={requestService} onClose={closeRequestModal} />}
+      <AnimatePresence>
+        {requestService !== null && (
+          <ServiceRequestModal
+            key="service-modal"
+            service={requestService}
+            onClose={closeRequestModal}
+          />
+        )}
+      </AnimatePresence>
     </>
   );
 }

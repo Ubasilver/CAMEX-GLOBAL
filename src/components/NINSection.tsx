@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
-import { ninCategories, services, companyInfo, buildWhatsAppLink } from '@/data/services';
+import { ninCategories, services, buildWhatsAppLink } from '@/data/services';
 
 export function NINSection() {
   return (
