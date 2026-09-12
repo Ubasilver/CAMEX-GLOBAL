@@ -33,12 +33,7 @@ export function Navbar() {
       >
         <nav className="max-w-7xl mx-auto px-5 sm:px-8 flex items-center justify-between h-16">
           <a href="#home" className="flex items-center gap-2 group">
-            <div className="w-8 h-8 rounded-lg bg-brand-500 flex items-center justify-center">
-              <span className="font-display font-bold text-white text-sm">C</span>
-            </div>
-            <span className="font-display font-bold text-white text-lg tracking-tight">
-              CAMEX
-            </span>
+            <img src="/camex-logo.png" alt="CAMEX GLOBAL" className="h-8 w-auto" />
           </a>
 
           <div className="hidden md:flex items-center gap-8">
@@ -88,7 +83,7 @@ export function Navbar() {
             className="fixed inset-0 z-[60] md:hidden bg-ink-950"
           >
             <div className="flex items-center justify-between h-16 px-5">
-              <span className="font-display font-bold text-white text-lg">CAMEX</span>
+              <img src="/camex-logo.png" alt="CAMEX GLOBAL" className="h-7 w-auto" />
               <button onClick={() => setMenuOpen(false)} aria-label="Close menu" className="text-white p-1">
                 <X size={24} />
               </button>

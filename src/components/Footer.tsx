@@ -1,4 +1,4 @@
-import { Facebook, Instagram, Twitter, Linkedin, ShieldCheck } from 'lucide-react';
+import { Facebook, Instagram, Twitter, Linkedin } from 'lucide-react';
 import { companyInfo } from '@/data/services';
 
 const socialLinks = [
@@ -23,11 +23,8 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
           <div className="md:col-span-2">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-brand-500 flex items-center justify-center">
-                <ShieldCheck size={16} className="text-white" />
-              </div>
-              <span className="font-display font-bold text-white text-lg">CAMEX GLOBAL</span>
+            <div className="mb-4">
+              <img src="/camex-logo.png" alt="CAMEX GLOBAL" className="h-10 w-auto" />
             </div>
             <p className="text-ink-500 text-sm max-w-xs leading-relaxed mb-6">
               Internet, printing and digital services made easy.
